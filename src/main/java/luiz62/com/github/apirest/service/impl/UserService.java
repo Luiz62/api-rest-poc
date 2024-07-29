@@ -46,6 +46,12 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void delete(Long id) {
+        findById(id);
+        repository.deleteById(id);
+    }
+
+    @Override
     public void findByEmail(UserDTO userDTO) {
         Optional<UserEntity> userEntity = repository.findByEmail(userDTO.getEmail());
         if (userEntity.isPresent() && !userDTO.getId().equals(userEntity.get().getId())) {

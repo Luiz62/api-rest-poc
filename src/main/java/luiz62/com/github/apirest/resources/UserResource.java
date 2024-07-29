@@ -18,11 +18,13 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserResource {
 
+    public static final String ID = "/{id}";
+
     private final IUserService service;
 
     private final ModelMapper mapper;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = ID)
     public ResponseEntity<UserDTO> findById(@PathVariable(name = "id") Long id) {
         return ResponseEntity.ok().body(mapper.map(service.findById(id), UserDTO.class));
     }
@@ -34,14 +36,20 @@ public class UserResource {
 
     @PostMapping
     public ResponseEntity<UserDTO> create(@RequestBody UserDTO dto) {
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path(ID)
                 .buildAndExpand(service.create(dto).getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = ID)
     public ResponseEntity<UserDTO> update(@PathVariable(name = "id") Long id, @RequestBody UserDTO dto) {
         dto.setId(id);
         return ResponseEntity.ok().body(mapper.map(service.update(dto), UserDTO.class));
+    }
+
+    @DeleteMapping(value = ID)
+    public ResponseEntity<UserDTO> delete(@PathVariable(name = "id") Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -14,5 +14,7 @@ public interface IUserService {
 
     UserEntity update(UserDTO userDTO);
 
+    void delete(Long id);
+
     void findByEmail(UserDTO userDTO);
 }
