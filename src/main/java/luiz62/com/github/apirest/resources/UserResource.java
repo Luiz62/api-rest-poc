@@ -1,7 +1,7 @@
 package luiz62.com.github.apirest.resources;
 
 import lombok.RequiredArgsConstructor;
-import luiz62.com.github.apirest.domain.UserEntity;
+import luiz62.com.github.apirest.domain.entity.UserEntity;
 import luiz62.com.github.apirest.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

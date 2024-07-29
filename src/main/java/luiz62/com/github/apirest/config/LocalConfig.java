@@ -2,7 +2,7 @@ package luiz62.com.github.apirest.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import luiz62.com.github.apirest.domain.UserEntity;
+import luiz62.com.github.apirest.domain.entity.UserEntity;
 import luiz62.com.github.apirest.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -1,7 +1,7 @@
 package luiz62.com.github.apirest.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import luiz62.com.github.apirest.domain.UserEntity;
+import luiz62.com.github.apirest.domain.entity.UserEntity;
 import luiz62.com.github.apirest.repository.UserRepository;
 import luiz62.com.github.apirest.service.IUserService;
 import luiz62.com.github.apirest.service.exceptions.ObjectNotFoundException;
