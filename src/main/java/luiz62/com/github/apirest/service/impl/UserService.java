@@ -8,6 +8,8 @@ import luiz62.com.github.apirest.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserService implements IUserService {
@@ -18,5 +20,10 @@ public class UserService implements IUserService {
     public UserEntity findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+    }
+
+    @Override
+    public List<UserEntity> findAll() {
+        return repository.findAll();
     }
 }
