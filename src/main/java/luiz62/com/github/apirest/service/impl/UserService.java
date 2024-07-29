@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import luiz62.com.github.apirest.domain.UserEntity;
 import luiz62.com.github.apirest.repository.UserRepository;
 import luiz62.com.github.apirest.service.IUserService;
+import luiz62.com.github.apirest.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,6 @@ public class UserService implements IUserService {
     @Override
     public UserEntity findById(Long id) {
         return repository.findById(id)
-                .orElse(null);
+                .orElseThrow(() -> new ObjectNotFoundException("Object not found"));
     }
 }
