@@ -40,9 +40,15 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public UserEntity update(UserDTO userDTO) {
+        findByEmail(userDTO);
+        return repository.save(mapper.map(userDTO, UserEntity.class));
+    }
+
+    @Override
     public void findByEmail(UserDTO userDTO) {
         Optional<UserEntity> userEntity = repository.findByEmail(userDTO.getEmail());
-        if (userEntity.isPresent()) {
+        if (userEntity.isPresent() && !userDTO.getId().equals(userEntity.get().getId())) {
             throw new DataIntegratyViolationException("E-mail ja cadastrado no sistema");
         }
     }

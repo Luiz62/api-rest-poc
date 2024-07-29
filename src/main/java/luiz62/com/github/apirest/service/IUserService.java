@@ -12,5 +12,7 @@ public interface IUserService {
 
     UserEntity create(UserDTO userDTO);
 
+    UserEntity update(UserDTO userDTO);
+
     void findByEmail(UserDTO userDTO);
 }
