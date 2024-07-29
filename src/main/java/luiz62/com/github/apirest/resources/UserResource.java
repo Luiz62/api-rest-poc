@@ -1,8 +1,9 @@
 package luiz62.com.github.apirest.resources;
 
 import lombok.RequiredArgsConstructor;
-import luiz62.com.github.apirest.domain.entity.UserEntity;
+import luiz62.com.github.apirest.domain.dto.UserDTO;
 import luiz62.com.github.apirest.service.IUserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +18,10 @@ public class UserResource {
 
     private final IUserService service;
 
+    private final ModelMapper mapper;
+
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UserEntity> findById(@PathVariable(name = "id") Long id) {
-        return ResponseEntity.ok().body(service.findById(id));
+    public ResponseEntity<UserDTO> findById(@PathVariable(name = "id") Long id) {
+        return ResponseEntity.ok().body(mapper.map(service.findById(id), UserDTO.class));
     }
 }
