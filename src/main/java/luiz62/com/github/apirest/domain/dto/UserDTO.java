@@ -1,5 +1,6 @@
 package luiz62.com.github.apirest.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import luiz62.com.github.apirest.domain.AbstractDomain;
 
@@ -22,5 +23,6 @@ public class UserDTO extends AbstractDomain {
 
     private String email;
 
+    @JsonIgnore
     private String password;
 }
