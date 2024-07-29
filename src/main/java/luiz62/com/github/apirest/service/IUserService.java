@@ -11,4 +11,6 @@ public interface IUserService {
     List<UserEntity> findAll();
 
     UserEntity create(UserDTO userDTO);
+
+    void findByEmail(UserDTO userDTO);
 }
